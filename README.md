@@ -1,6 +1,6 @@
-# Wrapper for hello-world
+# Wrapper for Conduit
 
-`hello-world` is a simple, minimal project to serve as a template for creating an app for the Embassy.
+`Conduit` is a simple, fast and reliable chat server powered by Matrix.
 
 ## Dependencies
 
@@ -53,15 +53,16 @@ cd ~/ && git clone https://github.com/Start9Labs/embassy-os.git
 cd embassy-os/appmgr/
 cargo install --path=. --features=portable --no-default-features && cd ~/
 ```
-Now you are ready to build your first EmbassyOS service
+Now you are ready to build Conduit service
 
 ## Cloning
 
 Clone the project locally. Note the submodule link to the original project(s). 
 
 ```
-git clone https://github.com/Start9Labs/hello-world-wrapper.git
-cd hello-world-wrapper
+git clone https://github.com/k0gen/matrix-conduit-wrapper.git
+cd matrix-conduit-wrapper
+git submodule update --init
 ```
 
 ## Building
@@ -79,5 +80,5 @@ SSH into an Embassy device.
 Run the following command to determine successful install:
 
 ```
-sudo appmgr install hello-world.s9pk
+sudo appmgr install matrix-conduit.s9pk
 ```
