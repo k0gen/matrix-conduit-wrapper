@@ -1,19 +1,21 @@
 compat: v0
-id: hello-world
+id: matrix-conduit
 version: 0.1.0
-title: hello-world
+title: Conduit Matrix Server
 description:
-  short: "A simple, minimal project to serve as a template for creating an app for the Embassy."
-  long: "Hello World is a simple, minimal project to serve as a template for creating an app for the Embassy."
+  short: "Conduit Matrix Server is a simple, fast and reliable chat server powered by [matrix]"
+  long: "Conduit is an open-source server implementation of the Matrix Specification with a focus on easy setup and low system requirements, making it very easy to set up"
 release-notes: Initial release.
 ports:
-  - internal: 80
-    tor: 80
+  - internal: 443
+    tor: 443
+  - internal: 8448
+    tor: 8448
 image:
   type: tar
 mount: /root
 has-instructions: true
-os-version-required: ">=0.2.4"
-os-version-recommended: ">=0.2.4"
+os-version-required: ">=0.2.8"
+os-version-recommended: ">=0.2.11"
 assets: []
 hidden-service-version: v3
