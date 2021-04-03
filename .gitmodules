@@ -1,0 +1,3 @@
+[submodule "conduit"]
+	path = conduit
+	url = https://gitlab.com/famedly/conduit.git
