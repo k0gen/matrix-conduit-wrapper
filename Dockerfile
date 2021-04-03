@@ -11,4 +11,4 @@ WORKDIR /root
 
 EXPOSE 8448 443
 
-ENTRYPOINT ["tiny", "/usr/local/bin/docker_entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker_entrypoint.sh"]
