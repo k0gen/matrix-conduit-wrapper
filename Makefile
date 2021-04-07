@@ -18,7 +18,7 @@ instructions.md: README.md
 	cp README.md instructions.md
 
 image.tar: Dockerfile docker_entrypoint.sh conduit/target/armv7-unknown-linux-musleabihf/release/conduit
-	DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --tag k0gen/conduit --platform=linux/arm/v7 -o type=docker,dest=image.tar .
+	DOCKER_CLI_EXPERIMENTAL=enabled docker buildx build --tag start9/matrix-conduit --platform=linux/arm/v7 -o type=docker,dest=image.tar .
 
 conduit/target/armv7-unknown-linux-musleabihf/release/conduit: $(CONDUIT_SRC)
 	docker run --rm -it -v ~/.cargo/registry:/root/.cargo/registry -v "$(shell pwd)"/conduit:/home/rust/src start9/rust-musl-cross:armv7-musleabihf cargo +beta build --release
