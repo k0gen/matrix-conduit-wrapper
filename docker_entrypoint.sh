@@ -9,6 +9,8 @@ echo "max_request_size = 20_000_000" >> /root/conduit.toml
 echo "allow_registration = true" >> /root/conduit.toml
 echo "allow_encryption = true" >> /root/conduit.toml
 echo "allow_federation = true" >> /root/conduit.toml
+echo "tor_federation = \"enable"" >> /root/conduit.toml
+echo "tor_proxy = \"socks5h://${HOST_IP}:9050\"" >> /root/conduit.toml
 echo "address = \"127.0.0.1\"" >> /root/conduit.toml
 
 cat <<EOT >> /etc/nginx/nginx.conf
