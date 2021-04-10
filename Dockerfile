@@ -4,6 +4,7 @@ RUN apk update
 RUN apk add --no-cache \
     tini \
     ca-certificates \
+    nginx \
     curl \
     libgcc
 
