@@ -1,7 +1,7 @@
 FROM alpine:3.12
 
 RUN apk update
-RUN apk add --no-cache \
+RUN apk add \
     tini \
     ca-certificates \
     nginx \
@@ -13,6 +13,8 @@ ADD ./docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 RUN chmod a+x /usr/local/bin/docker_entrypoint.sh
 
 WORKDIR /root
+
+RUN mkdir /run/nginx
 
 EXPOSE 8448 443
 

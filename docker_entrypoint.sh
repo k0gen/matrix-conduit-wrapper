@@ -13,14 +13,15 @@ echo "tor_federation = \"enable\"" >> /root/conduit.toml
 echo "tor_proxy = \"socks5h://${HOST_IP}:9050\"" >> /root/conduit.toml
 echo "address = \"127.0.0.1\"" >> /root/conduit.toml
 
-cat <<EOT >> /etc/nginx/nginx.conf
+echo "" > /etc/nginx/conf.d/matrix-conduit.conf
+cat <<EOT >> /etc/nginx/conf.d/matrix-conduit.conf
 
 server {
     listen 443;
     listen 8448;
 EOT
-echo "    server_name ${TOR_ADDRESS};" >> /etc/nginx/nginx.conf
-cat <<EOT >> /etc/nginx/nginx.conf
+echo "    server_name ${TOR_ADDRESS};" >> /etc/nginx/conf.d/matrix-conduit.conf
+cat <<EOT >> /etc/nginx/conf.d/matrix-conduit.conf
 
     location /_matrix/ {
         proxy_pass http://localhost:6167/_matrix/;
@@ -29,5 +30,6 @@ cat <<EOT >> /etc/nginx/nginx.conf
 EOT
 
 export CONDUIT_CONFIG="conduit.toml"
+#exec tini -s nginx
 exec tini conduit
 
