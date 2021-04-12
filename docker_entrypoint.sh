@@ -11,6 +11,7 @@ echo "allow_encryption = true" >> /root/conduit.toml
 echo "allow_federation = true" >> /root/conduit.toml
 echo "tor_federation = \"enabled\"" >> /root/conduit.toml
 echo "tor_proxy = \"socks5h://${HOST_IP}:9050\"" >> /root/conduit.toml
+echo "tor_only = false" >> /root/conduit.toml
 echo "address = \"127.0.0.1\"" >> /root/conduit.toml
 
 echo "" > /etc/nginx/conf.d/matrix-conduit.conf
