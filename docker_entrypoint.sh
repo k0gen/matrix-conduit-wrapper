@@ -30,6 +30,6 @@ cat <<EOT >> /etc/nginx/conf.d/matrix-conduit.conf
 EOT
 
 export CONDUIT_CONFIG="conduit.toml"
-#exec tini -s nginx
+nginx
 exec tini conduit
 
