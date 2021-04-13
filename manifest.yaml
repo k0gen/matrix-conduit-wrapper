@@ -7,11 +7,9 @@ description:
   long: "Conduit is an open-source server implementation of the Matrix Specification with a focus on easy setup and low system requirements, making it very easy to set up"
 release-notes: Initial release.
 ports:
-  - internal: 443
-    tor: 443
-    lan:
-      custom:
-        port: 443
+  - internal: 80
+    tor: 80
+    lan: standard
   - internal: 8448
     tor: 8448
     lan:

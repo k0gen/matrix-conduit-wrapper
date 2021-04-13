@@ -6,8 +6,10 @@ RUN apk add \
     ca-certificates \
     nginx \
     curl \
-    libgcc
+    libgcc \
+    jq
 
+ADD ./element-web/webapp /var/www
 ADD ./conduit/target/armv7-unknown-linux-musleabihf/release/conduit /usr/local/bin/conduit
 ADD ./docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 RUN chmod a+x /usr/local/bin/docker_entrypoint.sh
