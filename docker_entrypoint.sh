@@ -14,15 +14,22 @@ echo "tor_proxy = \"socks5h://${HOST_IP}:9050\"" >> /root/conduit.toml
 echo "tor_only = false" >> /root/conduit.toml
 echo "address = \"127.0.0.1\"" >> /root/conduit.toml
 
+cat /var/www/config.json | jq ".default_server_config[\"m.homeserver\"].base_url = \"http://${TOR_ADDRESS}\"" > /var/www/config.json.tmp && mv /var/www/config.json.tmp /var/www/config.json
+cat /var/www/config.json | jq ".default_server_config[\"m.homeserver\"].server_name = \"${TOR_ADDRESS}\"" > /var/www/config.json.tmp && mv /var/www/config.json.tmp /var/www/config.json
+
 echo "" > /etc/nginx/conf.d/matrix-conduit.conf
-cat <<EOT >> /etc/nginx/conf.d/matrix-conduit.conf
+cat <<EOT >> /etc/nginx/conf.d/default.conf
+
+server_names_hash_bucket_size 128;
 
 server {
-    listen 443;
+    listen 80;
     listen 8448;
 EOT
-echo "    server_name ${TOR_ADDRESS};" >> /etc/nginx/conf.d/matrix-conduit.conf
-cat <<EOT >> /etc/nginx/conf.d/matrix-conduit.conf
+echo "    server_name ${TOR_ADDRESS};" >> /etc/nginx/conf.d/default.conf
+cat <<EOT >> /etc/nginx/conf.d/default.conf
+
+    root /var/www;
 
     location /_matrix/ {
         proxy_pass http://localhost:6167/_matrix/;
