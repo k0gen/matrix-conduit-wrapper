@@ -8,6 +8,7 @@
 - [docker-buildx](https://docs.docker.com/buildx/working-with-buildx/)
 - [yq](https://mikefarah.gitbook.io/yq)
 - [toml](https://crates.io/crates/toml-cli)
+- [yarn](https://github.com/yarnpkg/berry)
 - [appmgr](https://github.com/Start9Labs/embassy-os/tree/master/appmgr)
 - [make](https://www.gnu.org/software/make/)
 
@@ -35,7 +36,7 @@ sudo snap install yq
 ```
 5. Install essentials build packages
 ```
-sudo apt-get install -y build-essential openssl libssl-dev libc6-dev clang libclang-dev ca-certificates
+sudo apt-get install -y build-essential openssl libssl-dev libc6-dev clang libclang-dev ca-certificates jq
 ```
 6. Install Rust
 ```
@@ -47,7 +48,14 @@ source $HOME/.cargo/env
 ```
 cargo install toml-cli
 ```
-8. Build and install appmgr
+8. Install yarn
+```
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo apt-get install yarn -y
+```
+9. Build and install appmgr
 ```
 cd ~/ && git clone https://github.com/Start9Labs/embassy-os.git
 cd embassy-os/appmgr/
